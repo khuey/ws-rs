@@ -11,7 +11,7 @@ version = "0.7.3"
 
 [dependencies]
 httparse = "1.0"
-log = "0.3.1"
+log = "0.3"
 mio = "0.6"
 rand = "0.3.10"
 sha1 = "0.2"
