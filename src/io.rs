@@ -86,7 +86,7 @@ pub struct Handler<F>
     factory: F,
     settings: Settings,
     state: State,
-    queue_tx: mio::channel::SyncSender<Command>,
+    queue_tx: mio::channel::Sender<Command>,
     queue_rx: mio::channel::Receiver<Command>,
     timer: mio::timer::Timer<Timeout>,
     next_connection_id: u32
@@ -97,7 +97,7 @@ impl<F> Handler<F>
     where F: Factory
 {
     pub fn new(factory: F, settings: Settings) -> Handler<F> {
-        let (tx, rx) = mio::channel::sync_channel(settings.max_connections * settings.queue_size);
+        let (tx, rx) = mio::channel::channel();
         let timer = mio::timer::Builder::default()
             .tick_duration(Duration::from_millis(TIMER_TICK_MILLIS))
             .num_slots(TIMER_WHEEL_SIZE)

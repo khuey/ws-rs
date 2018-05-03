@@ -1,5 +1,5 @@
 use url;
-use log::Level::Error as ErrorLevel;
+use log::LogLevel::Error as ErrorLevel;
 #[cfg(feature="ssl")]
 use openssl::ssl::{SslMethod, SslStream, SslConnectorBuilder};
 

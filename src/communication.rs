@@ -52,7 +52,7 @@ impl Command {
 #[derive(Clone)]
 pub struct Sender {
     token: Token,
-    channel: mio::channel::SyncSender<Command>,
+    channel: mio::channel::Sender<Command>,
     connection_id: u32,
 }
 
@@ -66,7 +66,7 @@ impl Sender {
 
     #[doc(hidden)]
     #[inline]
-    pub fn new(token: Token, channel: mio::channel::SyncSender<Command>, connection_id: u32) -> Sender {
+    pub fn new(token: Token, channel: mio::channel::Sender<Command>, connection_id: u32) -> Sender {
         Sender {
             token: token,
             channel: channel,
